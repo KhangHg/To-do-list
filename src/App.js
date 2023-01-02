@@ -9,10 +9,12 @@ import { Button } from 'bootstrap';
 function App() {
 
   //task to do state
-  const [toDo, setToDo] = useState([
-    { "id": 1, "tittle": "Task 1", "status": false },
-    { "id": 2, "tittle": "Task 2", "status": false }
-  ]);
+  const [toDo, setToDo] = useState(
+    [
+      { "id": 1, "tittle": "Task 1", "status": false },
+      { "id": 2, "tittle": "Task 2", "status": false }
+    ]
+  );
 
   //temp state
   const [newTask, setNewTask] = useState('');
@@ -20,9 +22,9 @@ function App() {
 
   //add task
   const addTask = () => {
+    let num = toDo.length + 1;
+    let newEntry = { id: num, tittle: newTask, status: false };
     if (newTask) {
-      let num = toDo.length + 1;
-      let newEntry = { id: num, tittle: newTask, status: false };
       setToDo([...toDo, newEntry]);
       setNewTask('');
     }
@@ -30,7 +32,8 @@ function App() {
 
   //delete task
   const deleteTask = (id) => {
-
+    let newTask = toDo.filter(task => task.id !== id);
+    setToDo(newTask);
   }
 
   //update task
@@ -116,7 +119,9 @@ function App() {
                     <FontAwesomeIcon icon={faPen} />
                   </span>
                   <span>
-                    <FontAwesomeIcon icon={faDeleteLeft} />
+                    <FontAwesomeIcon icon={faDeleteLeft}
+                      onClick={() => deleteTask(task.id)}
+                    />
                   </span>
                 </div>
               </div>
