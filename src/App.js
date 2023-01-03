@@ -42,7 +42,14 @@ function App() {
   }
   //mark task as done ?
   const markDone = (id) => {
+    const newTask = toDo.map(task => {
+      if (task.id === id) {
+        return ({ ...task, status: !task.status })
+      }
+      return task;
+    })
 
+    setToDo(newTask);
   }
   //cancel update
   const cancelUpdate = () => {
@@ -63,6 +70,8 @@ function App() {
       <div className="row">
         <div className="col">
           <input
+            value={updateData && updateData.title}
+            onChange={(e) => changeTask(e)}
             className="form-control form-control-lg"
           />
         </div>
@@ -112,25 +121,31 @@ function App() {
                   <span className="taskText">{task.tittle}</span>
                 </div>
                 <div className="iconsWrap">
-                  <span>
-                    <FontAwesomeIcon icon={faCircleCheck} />
+                  <span title="Completed / Not Completed">
+                    <FontAwesomeIcon icon={faCircleCheck}
+                      onClick={(e) => markDone(task.id)}
+                    />
                   </span>
-                  <span>
-                    <FontAwesomeIcon icon={faPen} />
-                  </span>
-                  <span>
+
+                  {task.status ? null : (
+                    <span title="Edit"
+                      onClick={() => setUpdateData({ id: task.id, title: task.title, satus: task.status ? true : false })}
+                    >
+                      <FontAwesomeIcon icon={faPen} />
+                    </span>
+                  )}
+                  <span title="Delete"
+                    onClick={() => deleteTask(task.id)}
+                  >
                     <FontAwesomeIcon icon={faDeleteLeft}
-                      onClick={() => deleteTask(task.id)}
                     />
                   </span>
                 </div>
               </div>
             </React.Fragment>
-          )
+          );
         })
       }
-
-
     </div>
   );
 }
