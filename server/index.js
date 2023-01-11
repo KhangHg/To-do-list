@@ -4,8 +4,10 @@ const PORT = 3003;
 const axios = require('axios');
 const { response } = require('express');
 const cors = require('cors');
+const morgan = require('morgan')
 
 app.use(cors());
+app.use(morgan());
 
 let day = new Date()
 let today = day.toISOString().split('T')[0]
