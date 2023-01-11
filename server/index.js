@@ -102,16 +102,20 @@ app.use('/apiSchoolerDay', async (req, res) => {
         })
         const api = response.data;
         const infor = {
+            date: api.schedule[0].day,
             name: api.name,
             content: api.content,
             teacher: api.schedule[0].teachers[0].name,
             room: api.schedule[0].room,
-            test: api.score_names[0].name,
+            test: api.score_names.name,
         }
         console.log(infor);
         res.send(infor);
     })
 })
 
+app.use('/test', async (req, res) => {
+    return res.json("Hello");
+})
 
 app.listen(PORT, () => console.log("running..."))
