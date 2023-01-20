@@ -9,7 +9,7 @@ import { Card } from 'antd';
 import './App.css';
 import axios from 'axios'
 
-const urlSchoolerMonth = 'http://localhost:3003/apiSchoolerDay';
+const urlSchoolerMonth = 'https://todolist-scl3.onrender.com/apiSchoolerDay';
 
 function App() {
   //call data
