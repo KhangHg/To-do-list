@@ -11,6 +11,7 @@ app.use(morgan());
 
 let day = new Date()
 let today = day.toISOString().split('T')[0]
+const url = 'https://todolist-scl3.onrender.com';
 
 const urlMonth = 'https://schooler.sun-asterisk.com/api/schedules/' + today + '/month/student'
 
@@ -64,7 +65,7 @@ app.use('/apiSchoolerMonth', async (req, res) => {
 
 
 app.use('/apiSchoolerDay', async (req, res) => {
-    axios.get('http://localhost:3003/apiSchoolerMonth').then(async (results) => {
+    axios.get(url + '/apiSchoolerMonth').then(async (results) => {
         const monthData = results.data;
 
         // console.log(diffDays);
