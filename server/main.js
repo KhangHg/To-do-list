@@ -103,10 +103,12 @@ app.use('/apiSchoolerDay', async (req, res) => {
             "body": null,
         })
         const api = response.data;
+        console.log(api);
         const infor = {
             name: api.name,
             content: api.content,
             teacher: api.schedule[0].teachers[0].name,
+            date: api.schedule[0].day,
             room: api.schedule[0].room,
             test: api.score_names[0].name,
         }

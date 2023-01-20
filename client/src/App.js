@@ -203,13 +203,14 @@ function App() {
         <Row className='schooler-card'>
           <Card title="Lịch Học Tiếng Nhật" style={{ width: 300 }} >
             <p>Tên bài học : {data ? data.name : ""}</p>
+            <p>Ngày : {data ? data.date : ""}</p>
             <p>Nội dung : {data ? data.content : ""}</p>
             <p>Giảng viên : {data ? data.teacher : ""}</p>
             <p>Phòng học : {data ? data.room : ""}</p>
             <p>Test : {data ? data.test : "Không có"}</p>
           </Card>
         </Row>
-        <Row>test</Row>
+        <Row></Row>
       </Col>
     </Row>
 
